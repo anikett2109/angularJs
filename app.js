@@ -3,16 +3,10 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
 
-// Import required modules
-
-// Create an Express app
 const app = express();
 
-// Enable CORS
 app.use(express.json());
 app.use(cors());
-
-// Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/cafe', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log('Connected to MongoDB');
@@ -21,13 +15,12 @@ mongoose.connect('mongodb://localhost:27017/cafe', { useNewUrlParser: true, useU
         console.error('Error connecting to MongoDB:', error);
     });
 
-// Define a user schema
+
 const userSchema = new mongoose.Schema({
     username: { type: String, required: true },
     password: { type: String, required: true }
 });
 
-// Define a user model
 const User = mongoose.model('User', userSchema);
 const productSchema = new mongoose.Schema({
     name: { type: String, required: true },
@@ -116,7 +109,6 @@ app.put('/products/:id',async (req,res)=>{
         res.status(500).json({message:'Internal server error'});
     }
 })
-
 app.delete('/products/:id',async (req,res)=>{
     try{
         await Product.findByIdAndDelete(req.params.id);
