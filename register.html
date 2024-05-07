@@ -47,7 +47,7 @@
         <form>
             <div class="form-group">
                 <label for="username">Username:</label>
-                <input type="text" id="username" ng-model="username" ng-init="username='Raghav'" required>
+                <input type="text" id="username" ng-model="username" ng-init="username='Aniket'" required>
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
@@ -65,7 +65,7 @@
     <script>
         angular.module('myApp', [])
             .controller('RegisterController', function ($scope, $http) {
-                $scope.username = 'Raghav';
+                $scope.username = 'Aniket';
                 $scope.password = 'Hello';
                 $scope.register = function () {
                     $http.post('http://localhost:3000/register', {
